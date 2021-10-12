@@ -1,0 +1,32 @@
+.montoInp, .dropInp {
+    width: 80%;
+    margin-bottom: 1em;
+    border-radius: 10;
+}
+
+.monthSelect {
+    margin-bottom: 1em;
+    font-size: smaller;
+    padding: 0.25em;
+}
+
+/* 
+.dropInp {
+    width: 80%;
+    margin-bottom: 1em;
+} */
+
+.suBtn {
+    /* background-color: lightcyan; */
+    border-radius: 1px;
+}
+
+.suBtn:hover {
+    /* background-color: lightblue; */
+    cursor: pointer;
+    color: darkseagreen
+}
+/* 
+.montoInp, .dropInp, .suBtn {
+    
+} */
