@@ -4,30 +4,25 @@ import "../App.css";
 import "./form.css";
 import "tachyons";
 
-export const MainForm = ({ apiUrl }) => {
+export const MainForm = ({ apiUrl, saldo }) => {
   let initState = {
     operacion: "egreso",
     monto: "",
     tipo: "Super",
     tipoPers: "",
-    paga: "FC",
+    paga: "Fondo Común",
     sheetname: "mesA",
   };
   let component;
 
-  // 1. Armar un state, que sea un objeto con 3 propiedades: monto, tipo, tipoPers/tipo2?
-  const [form, setForm] = useState(initState);
-  // const notify = () => toast.success("Egreso registrado con éxito");
-
-  // 2. Armar una funcion que envie los datos
-  const onSubmit = ({
+  const submitApr = ({
     monto,
     tipo,
     tipoPers,
     paga,
     operacion,
     sheetname,
-    specs
+    specs,
   } = form) => {
     const promiseA = fetch(apiUrl + "/submit", {
       method: "POST",
@@ -41,20 +36,45 @@ export const MainForm = ({ apiUrl }) => {
         operacion,
         tipoPers,
         sheetname,
-        specs
+        specs,
       }),
-    }).catch((err) => alert(err));
-    if (monto >= 1) {
-      // mandar form.tipo y monto al API
-    } else {
-      toast.error("Ingrese un monto porfavor");
-    }
+    }).catch((err) => toast.error(err));
     toast.promise(promiseA, {
       loading: "Guardando...",
       success: () => "Egreso registrado con éxito",
       error: () => "Error al guardar, intentelo de nuevo",
     });
     setForm(initState);
+  };
+
+  // 1. Armar un state, que sea un objeto con 3 propiedades: monto, tipo, tipoPers/tipo2?
+  const [form, setForm] = useState(initState);
+  // const notify = () => toast.success("Egreso registrado con éxito");
+
+  // 2. Armar una funcion que envie los datos
+  const onSubmit = () => {
+    // console.log('1',saldo);
+    // console.log('2',form.monto);
+    // console.log('3',saldo <= form.monto);
+    if (saldo < form.monto) {
+        toast((t) => (
+      <span>
+        <b>
+        Este egreso supera su saldo disponible
+        </b>
+        <div>
+          <button className="AprBtn Apr" onClick={() => { submitApr(); toast.dismiss(t.id)}}>
+            Continuar
+          </button>
+          <button className="AprBtn Den" onClick={() => toast.dismiss(t.id)}>
+            Cancelar
+          </button>
+        </div>
+      </span>
+    ));
+  } else {
+    submitApr();
+  }
   };
 
   // Condicional para muestra de input concepto personalizado
@@ -73,7 +93,7 @@ export const MainForm = ({ apiUrl }) => {
   } else {
     component = null;
   }
-  
+
   // Condicional para muestra de input specs servicio
   if (form.tipo === "Servicios") {
     component = (
@@ -160,7 +180,7 @@ export const MainForm = ({ apiUrl }) => {
             setForm({ ...form, paga: event.target.value });
           }}
         >
-          <option defaultValue value="FC">
+          <option defaultValue value="Fondo Comun">
             Fondo común
           </option>
           <option value="S">Simón</option>
@@ -171,7 +191,11 @@ export const MainForm = ({ apiUrl }) => {
         className="suBtn grow pa3"
         name="tipo"
         value="Cargar"
-        onClick={() => onSubmit(form)}
+        onClick={
+          form.monto >= 1
+            ? () => onSubmit(form)
+            : () => toast.error("Ingrese un monto por favor")
+        }
         id="submit"
         type="submit"
       ></input>

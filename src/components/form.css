@@ -8,6 +8,7 @@
     margin-bottom: 1em;
     font-size: smaller;
     padding: 0.25em;
+    margin-top: 0;
 }
 
 /* 
@@ -26,7 +27,17 @@
     cursor: pointer;
     color: darkseagreen
 }
-/* 
-.montoInp, .dropInp, .suBtn {
-    
-} */
+
+.AprBtn {
+    margin: 5px;
+    margin-top: 10px;
+    border-radius: 3px;
+}
+
+.Apr {
+    background-color: rgba(49, 216, 99, 0.3);
+}
+
+.Den {
+    background-color: lightpink;
+}

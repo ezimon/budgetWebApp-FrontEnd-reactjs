@@ -1,12 +1,71 @@
 .graphContainer {
-  /* display: inline-block; */
+  display: inline-block;
+  border-radius: 15px;
+  border-color: rgba(125, 184, 125, 0.8);
+  border-width: 3.2px;
+  border-style: solid;
+  margin-top: 0em;
+}
+
+.navBar2 {
+  margin-top: 0;
+  background-color: rgba(134, 134, 134, 0.2);
+  height: 1.75em;
+  margin-left: 0;
+  margin-right: 0;
+  display: flex;
+  justify-content: space-evenly;
+  border-width: 1px;
+  border-color: rgba(255,255,255,01);
+  border-radius: 5px;
+  border-style: solid;
+  margin-bottom: 1em;
+}
+
+.navBarBtn {
+  width: 100%;
+  background-color: rgba(1, 1, 1, 0);
+  border: none;
+  color: rgba(1,1,1,0.8)
+}
+
+.navBarBtn:hover {
+  background-color: rgba(1, 1, 1, 0.2);
+}
+
+.sep {
+  width: 1px;
+  background-color: rgba(1,1,1,0.3);
+  /* height: 60%; */
+  vertical-align: middle;
+  margin-top: 0.25em;
+  margin-bottom: 0.25em;
+}
+
+
+.cakeDiv {
+  max-width: 35em;
+  /* max-height: 35em; */
+  /* display: flex; */
+  /* justify-content: space-evenly; */
+  /* flex-direction: row; */
+  margin: auto;
+  margin-bottom: 2em;
+  /* padding: 3em; */
   /* border-radius: 15px;
   border-color: rgba(125, 184, 125, 0.8);
   border-width: 3.2px;
   border-style: solid;
-  margin-top: 0em; */
+  margin-bottom: 1em; */
+  /* background-color: rgba(239, 253, 189, 0.2); */
 }
 
-.graphTitle {
-    margin-bottom: 0;   
+.monthSelectSt {
+  background-color: rgba(0, 0, 0, 0.09);
+  border-width: 1.4px;
+  border-radius: 5px;
+  background-color: rgba(255,255,255,0);
+  margin-bottom: 1px;
+  font-size: 17px;
+  padding: 2px;
 }

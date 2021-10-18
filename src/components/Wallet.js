@@ -1,12 +1,28 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import "./wallet.css";
-import { Loading } from "./Loading";
 import { Saldar } from "./Saldar";
 import { Corresp } from "./Corresp";
-import { Promedio } from "./Promedio";
+import { Promediodia } from "./Promediodia";
 import { Saldo } from "./Saldo";
+import { PromedioMes } from "./PromedioMes";
 
-export const Wallet = ({ apiUrl }) => {
+export const Wallet = ({ apiUrl, saldo }) => {
+
+  
+  const [corresp, setCorresp] = useState({
+    S: 0,
+    D: 0,
+  });
+  
+  const [saldar, setSaldar] = useState({
+    S: 0,
+    D: 0,
+  });
+  
+
+
+
+  //   const [isLoading, setIsLoading] = useState(true);
   // const [isLoading, setIsLoading] = useState();
 
   // const loadData = () => {
@@ -22,13 +38,14 @@ export const Wallet = ({ apiUrl }) => {
       {/* {isLoading ? (
         <Loading />
       ) : ( */}
-        <div>
-          <Saldo apiUrl={apiUrl} />
-          <Promedio apiUrl={apiUrl} />
-        </div>
+      <div>
+        <Saldo apiUrl={apiUrl} saldo={saldo} />
+        <Promediodia apiUrl={apiUrl} />
+        <PromedioMes apiUrl={apiUrl} />
+      </div>
       {/* )} */}
-      <Saldar apiUrl={apiUrl} />
-      <Corresp apiUrl={apiUrl} />
+      <Saldar apiUrl={apiUrl} saldar={saldar} setSaldar={setSaldar} />
+      <Corresp apiUrl={apiUrl} corresp={corresp} setCorresp={setCorresp} />
     </div>
   );
 };

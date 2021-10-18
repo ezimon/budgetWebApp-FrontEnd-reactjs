@@ -7,7 +7,7 @@ export const IngresoForm = ({ apiUrl }) => {
   const notify = () => toast.success("Ingreso registrado con éxito");
 
   const initState = {
-    paga: "ambos",
+    paga: "Ambos",
     monto: "",
     tipo: "INGRESO",
     sheetname: "mesA",
@@ -26,7 +26,7 @@ export const IngresoForm = ({ apiUrl }) => {
           monto,
           paga,
           tipo,
-          sheetname
+          sheetname,
         }),
       })
         .then((res) => notify())
@@ -37,35 +37,33 @@ export const IngresoForm = ({ apiUrl }) => {
     setForm(initState);
   };
 
-
   return (
-    <div className="ma4">
+    <div>
+      <select
+        className="monthSelect"
+        value={form.sheetname}
+        name="sheetname"
+        onChange={(event) => {
+          setForm({ ...form, sheetname: event.target.value });
+        }}
+      >
+        <option defaultValue value="mesA">
+          mes actual
+        </option>
+        <option value="January">enero</option>
+        <option value="February">febrero</option>
+        <option value="March">marzo</option>
+        <option value="April">abril</option>
+        <option value="May">mayo</option>
+        <option value="June">junio</option>
+        <option value="July">julio</option>
+        <option value="August">agosto</option>
+        <option value="September">septiembre</option>
+        <option value="October">octubre</option>
+        <option value="November">noviembre</option>
+        <option value="December">diciembre</option>
+      </select>
       <article className="flex-outer">
-        <select
-          className="monthSelect"
-          value={form.sheetname}
-          name="sheetname"
-          onChange={(event) => {
-            setForm({ ...form, sheetname: event.target.value });
-          }}
-        >
-          <option defaultValue value="mesA">
-            mes actual
-          </option>
-          <option value="January">enero</option>
-          <option value="February">febrero</option>
-          <option value="March">marzo</option>
-          <option value="April">abril</option>
-          <option value="May">mayo</option>
-          <option value="June">junio</option>
-          <option value="July">julio</option>
-          <option value="August">agosto</option>
-          <option value="September">septiembre</option>
-          <option value="October">octubre</option>
-          <option value="November">noviembre</option>
-          <option value="December">diciembre</option>
-        </select>
-
         <input
           className="montoInp pa3 grow"
           name="monto"

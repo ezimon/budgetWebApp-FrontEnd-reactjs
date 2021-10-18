@@ -3,8 +3,7 @@ import "chart.js";
 // import Chart from 'chart.js/auto';
 import { Pie } from "react-chartjs-2";
 import { Loading } from "./Loading";
-import './stats.css'
-import { Point } from "tsparticles";
+import "./stats.css";
 
 export const CakeRecount = ({ apiUrl }) => {
   const [cake, setCake] = useState("");
@@ -14,6 +13,7 @@ export const CakeRecount = ({ apiUrl }) => {
     const fetchCake = async () => {
       await fetch(apiUrl + "/recount")
         .then((dataCake) => dataCake.json())
+        // .then((dataCake) => dataCake[0])
         .then((dataCake) => dataCake.map(Number))
         .then((dataCake) => setCake(dataCake));
       setIsLoading(false);
@@ -24,34 +24,35 @@ export const CakeRecount = ({ apiUrl }) => {
   }, []);
 
   const options = {
+    // maintainAspectRatio: false,
     layout: {
       padding: 0,
     },
     plugins: {
-        tooltip: {
-            displayColors: false,
-            backgroundColor: 'rgba(50, 150, 0, 0.75)',
-            borderWidth: '1',
-            borderColor: 'white',
-            callbacks: {
-                label: function(item) {
-                    let monto = item.parsed;
-                    monto = monto.toLocaleString();
-                    let title = item.label;
-                    let label = title+': $'+monto;
-                    return label;
-                }
-            }
+      tooltip: {
+        displayColors: false,
+        backgroundColor: "rgba(50, 150, 0, 0.75)",
+        borderWidth: "1",
+        borderColor: "white",
+        callbacks: {
+          label: function (item) {
+            let monto = item.parsed;
+            monto = monto.toLocaleString();
+            let title = item.label;
+            let label = title + ": $" + monto;
+            return label;
+          },
         },
+      },
       title: {
-       display: true,
-       text: 'egresos todo el año',
-       color: 'green',
-       font: {
-           size: 25,
-           weight: 'bold',
-           family: 'Josefin Sans',
-       }
+        display: true,
+        text: "egresos todo el año",
+        color: "green",
+        font: {
+          size: 25,
+          weight: "bold",
+          family: "Josefin Sans",
+        },
       },
       legend: {
         // display: false,
@@ -98,15 +99,10 @@ export const CakeRecount = ({ apiUrl }) => {
     ],
   };
 
-  const component = (
-    <div>
-      {/* <h3 className="graphTitle">egresos este mes</h3> */}
-      <Pie data={specs} options={options} />
-    </div>
-  );
+  const component = <Pie data={specs} options={options} />;
 
   return (
-    <div>
+    <div className="cakeDiv">
       {
         isLoading ? <Loading /> : component
         // <p>{cake}</p>

@@ -1,22 +1,12 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import CountUp from "react-countup";
 import "./saldo.css";
 
-export const Saldo = ({ apiUrl }) => {
-  const [saldo, setSaldo] = useState("");
 
-  // const [numCol, setNumCol] = useState("green");
 
-  useEffect(() => {
-    const fetchData = async () => {
-      await fetch(apiUrl + "/saldo")
-        .then((dataSaldo) => dataSaldo.json())
-        .then((dataSaldo) => setSaldo(dataSaldo));
-    };
-    fetchData();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
 
+export const Saldo = ({ apiUrl, saldo }) => {
+  console.log('saldo', saldo);
   return (
     <div>
       <div className="saldoBubble shadow-4">
@@ -31,7 +21,8 @@ export const Saldo = ({ apiUrl }) => {
             className="saldoNum tc"
             style={saldo < 0 ? { color: "#cc2541" } : { color: "green " }}
           >
-            <CountUp className="tc" end={saldo} duration={1} prefix="$" />
+            <CountUp className="tc" end={saldo} duration={1} formattingFn={saldo => "$"+saldo.toLocaleString()} />
+            {/* {saldo} */}
           </h1>
         </div>
       </div>

@@ -10,6 +10,8 @@
     "@testing-library/jest-dom": "^5.14.1",
     "@testing-library/react": "^11.2.7",
     "@testing-library/user-event": "^12.8.3",
+    "ag-grid-community": "^26.1.0",
+    "ag-grid-react": "^26.1.0",
     "chart.js": "^3.5.1",
     "material-ui-icons": "^1.0.0-beta.36",
     "moment": "^2.29.1",
