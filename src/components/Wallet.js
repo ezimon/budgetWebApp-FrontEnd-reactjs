@@ -6,7 +6,7 @@ import { Promediodia } from "./Promediodia";
 import { Saldo } from "./Saldo";
 import { PromedioMes } from "./PromedioMes";
 
-export const Wallet = ({ apiUrl, saldo }) => {
+export const Wallet = ({ apiUrl }) => {
 
   
   const [corresp, setCorresp] = useState({
@@ -39,7 +39,7 @@ export const Wallet = ({ apiUrl, saldo }) => {
         <Loading />
       ) : ( */}
       <div>
-        <Saldo apiUrl={apiUrl} saldo={saldo} />
+        <Saldo apiUrl={apiUrl} />
         <Promediodia apiUrl={apiUrl} />
         <PromedioMes apiUrl={apiUrl} />
       </div>

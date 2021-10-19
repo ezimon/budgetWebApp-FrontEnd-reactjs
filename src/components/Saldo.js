@@ -1,11 +1,20 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import CountUp from "react-countup";
 import "./saldo.css";
 
+export const Saldo = ({ apiUrl }) => {
 
+  const [saldo, setSaldo] = useState("");
+  useEffect(() => {
+    const fetchData = async () => {
+      await fetch(apiUrl + "/saldo")
+        .then((dataSaldo) => dataSaldo.json())
+        .then((dataSaldo) => setSaldo(dataSaldo));
+    };
+    fetchData();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
-
-export const Saldo = ({ apiUrl, saldo }) => {
   console.log('saldo', saldo);
   return (
     <div>

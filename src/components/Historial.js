@@ -3,9 +3,9 @@ import { AgGridReact } from "ag-grid-react";
 import "ag-grid-community/dist/styles/ag-grid.css";
 import "ag-grid-community/dist/styles/ag-theme-balham.css";
 import "./historial.css";
+import toast, { Toaster } from "react-hot-toast";
 
 export const Historial = ({ apiUrl }) => {
-  
   const [sheetname, setSheetname] = useState("mesA");
   const gridRef = useRef(null);
   const [grid, setGrid] = useState({
@@ -17,10 +17,10 @@ export const Historial = ({ apiUrl }) => {
         field: "2",
         flex: 1.5,
         valueFormatter: (params) => {
-          if (params.value.length !== 0) {
+          if (params.value !== undefined) {
             return "$" + params.value;
           } else {
-            return "-"
+            return "-";
           }
         },
       },
@@ -29,7 +29,7 @@ export const Historial = ({ apiUrl }) => {
     ],
     rowData: null,
   });
-// eslint-disable-next-line
+  // eslint-disable-next-line
   const [del, setDel] = useState({
     sheetname: "mesA",
   });
@@ -49,28 +49,25 @@ export const Historial = ({ apiUrl }) => {
     //   setIsLoading(false);
   };
 
-  const onButtonClick = () => {
+  const onButtonClick = async () => {
     const selectedNodes = gridRef.current.api.getSelectedNodes();
     let indexes = [];
     for (let i = 0; i < selectedNodes.length; i++) {
       const element = selectedNodes[i];
       indexes.push(element.rowIndex);
     }
-    // fetch(apiUrl + "/delete", {
-    //   method: "POST",
-    //   headers: {
-    //     "Content-Type": "application/json",
-    //   },
-    //   body: JSON.stringify({
-    //     indexes,
-    //     del.sheetname,
-    //   }),
-    // })
-    // const selectedData = selectedNodes.map((node) => node.data);
-    // const selectedDataStringPresentation = selectedData
-    //   .map((node) => `${node[0]} ${node[1]}`)
-    //   .join(", ");
-    console.log(indexes);
+    await fetch(apiUrl + "/delete", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        indexes,
+        sheetname,
+      }),
+    })
+      .then((res) => toast.success("Movimiento eliminado con éxito"))
+      .catch((err) => toast.error("Algo salió mal, inténtelo de nuevo. Si persiste el problema notifique a Simón"));
   };
 
   return (
@@ -106,10 +103,11 @@ export const Historial = ({ apiUrl }) => {
         columnDefs={grid.columnDefs}
         rowData={grid.rowData}
         rowSelection="multiple"
-        
+
         // resizable={true}
         // onGridReady={params=> gridApi = params.api}
       />
+      <Toaster />
     </div>
   );
 };

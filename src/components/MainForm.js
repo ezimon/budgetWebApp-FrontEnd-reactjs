@@ -1,10 +1,23 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import toast, { Toaster } from "react-hot-toast";
 import "../App.css";
 import "./form.css";
 import "tachyons";
 
-export const MainForm = ({ apiUrl, saldo }) => {
+export const MainForm = ({ apiUrl }) => {
+
+  const [saldo, setSaldo] = useState("");
+  useEffect(() => {
+    const fetchData = async () => {
+      await fetch(apiUrl + "/saldo")
+        .then((dataSaldo) => dataSaldo.json())
+        .then((dataSaldo) => setSaldo(dataSaldo));
+    };
+    fetchData();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+
   let initState = {
     operacion: "egreso",
     monto: "",
@@ -180,7 +193,7 @@ export const MainForm = ({ apiUrl, saldo }) => {
             setForm({ ...form, paga: event.target.value });
           }}
         >
-          <option defaultValue value="Fondo Comun">
+          <option defaultValue value="Fondo común">
             Fondo común
           </option>
           <option value="S">Simón</option>
@@ -200,6 +213,9 @@ export const MainForm = ({ apiUrl, saldo }) => {
         type="submit"
       ></input>
       <Toaster position="top-center" />
+      {/* <a href="">
+      <p className="difCaja" >Diferencia de caja?</p>
+      </a> */}
     </div>
   );
 };
