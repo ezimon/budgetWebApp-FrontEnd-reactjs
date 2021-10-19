@@ -36,11 +36,12 @@ export const Historial = ({ apiUrl }) => {
 
   useEffect(() => {
     fetchHist(sheetname);
+    console.log(sheetname);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [sheetname]);
 
-  const fetchHist = async (sheetname) => {
-    await fetch(apiUrl + `/historial?sheetname=${sheetname}`)
+  const fetchHist = (sheetname) => {
+    fetch(apiUrl + `/historial/${sheetname}`)
       .then((data) => data.json())
       // .then((data) => Object.assign({}, data))
       // .then((data) => setHist(data))
