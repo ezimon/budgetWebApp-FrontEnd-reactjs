@@ -13,12 +13,12 @@ function App() {
   // const apiUrl = 'https://mighty-crag-46095.herokuapp.com'
 
   const [route, setRoute] = useState("egreso");
-  
+
   const ing = <IngresoForm apiUrl={apiUrl} />;
   const mainf = <MainForm apiUrl={apiUrl} />;
   const wallet = <Wallet apiUrl={apiUrl} />;
   const stats = <Stats apiUrl={apiUrl} />;
-  
+
   // const [numCol, setNumCol] = useState("green");
 
   let component;
@@ -40,17 +40,25 @@ function App() {
       break;
   }
 
+  const params = {
+    polygon: {
+      enable: true,
+      type: "inside",
+      move: { radius: 10 },
+      url: "path/to/svg.svg",
+    },
+  };
+
   return (
     <div className="tc">
       <div className="f4 dib v-mid pv-m w-90">
-      <Particles className="particlebg" params={{ polygon: { enable: true, type: 'inside', move: { radius: 10 }, url: 'path/to/svg.svg' } }} />
-        {/* <h1 className="HJTitle center">Helendra Jordeche</h1> */}
+        <Particles className="particlebg" params={params} />
         <div className="forms shadow-4 br3">
           <h1 className="navTitle">{route}</h1>
           {component}
         </div>
       </div>
-      <NavBar setRoute={setRoute}/>
+      <NavBar setRoute={setRoute} />
     </div>
   );
 }
