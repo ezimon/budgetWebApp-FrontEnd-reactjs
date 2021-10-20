@@ -67,7 +67,7 @@ export const MainForm = ({ apiUrl }) => {
     // console.log('1',saldo);
     // console.log('2',form.monto);
     // console.log('3',saldo <= form.monto);
-    if (saldo < form.monto) {
+    if (Number(saldo) < Number(form.monto)) {
       toast((t) => (
         <span>
           <b>Este egreso supera su saldo disponible</b>

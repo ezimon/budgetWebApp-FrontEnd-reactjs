@@ -16,7 +16,7 @@ export const IngresoForm = ({ apiUrl }) => {
   const [form, setForm] = useState(initState);
 
   const onSubmit = async ({ monto, paga, tipo, sheetname } = form) => {
-    if (monto >= 1) {
+    if (Number(monto) >= 1) {
       await fetch(apiUrl + "/submit", {
         method: "POST",
         headers: {
