@@ -1,16 +1,16 @@
 import React, { useState } from "react";
-import { MainForm } from "./components/MainForm";
-import { IngresoForm } from "./components/IngresoForm";
-import { Wallet } from "./components/Wallet";
+import { MainForm } from "./components/MainForm/MainForm";
+import { IngresoForm } from "./components/IngresoForm/IngresoForm";
+import { Wallet } from "./components/Wallet/Wallet";
 import { NavBar } from "./components/NavBar";
-import { Stats } from "./components/Stats";
+import { Stats } from "./components/Stats/Stats";
 import "./App.css";
 import "tachyons";
 import Particles from "react-particles-js";
 
 function App() {
-  const apiUrl = "http://192.168.0.48:1337";
-  // const apiUrl = 'https://mighty-crag-46095.herokuapp.com'
+  // const apiUrl = "http://192.168.0.48:1337";
+  const apiUrl = "https://mighty-crag-46095.herokuapp.com";
 
   const [route, setRoute] = useState("egreso");
 

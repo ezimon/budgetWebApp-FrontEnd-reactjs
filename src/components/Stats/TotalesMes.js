@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
 import "chart.js";
 // import Chart from 'chart.js/auto';
-import { Bar } from "react-chartjs-2";// eslint-disable-next-line
-import { Loading } from "./Loading";
+import { Bar } from "react-chartjs-2"; // eslint-disable-next-line
+import { Loading } from "../Loading";
 import "./stats.css";
 
 export const Bars = ({ apiUrl }) => {
@@ -10,10 +10,20 @@ export const Bars = ({ apiUrl }) => {
   const [isLoading, setIsLoading] = useState(true);
   const [index, setIndex] = useState(0);
 
-  const conceptos = ['super', 'verdu', 'dietética', 'salidas', 'delivery', 'tabaco', 'expensas', 'servicios', 'extras']
+  const conceptos = [
+    "super",
+    "verdu",
+    "dietética",
+    "salidas",
+    "delivery",
+    "tabaco",
+    "expensas",
+    "servicios",
+    "extras",
+  ];
   // const meses = ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'];
   const concepto = conceptos[index];
-  const title = 'egresos en ' + concepto + ' este año';
+  const title = "egresos en " + concepto + " este año";
 
   useEffect(() => {
     const fetchTotales = async () => {
@@ -26,9 +36,6 @@ export const Bars = ({ apiUrl }) => {
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
-
-  
-
 
   const options = {
     // layout: {
@@ -62,7 +69,20 @@ export const Bars = ({ apiUrl }) => {
   };
 
   const specs = {
-    labels: ["Ene.", "Feb.", "Mar.", "Abr.", "May.", "Jun.", "Jul.", "Ago.", "Sep.", "Oct.", "Nov.", "Dic."],
+    labels: [
+      "Ene.",
+      "Feb.",
+      "Mar.",
+      "Abr.",
+      "May.",
+      "Jun.",
+      "Jul.",
+      "Ago.",
+      "Sep.",
+      "Oct.",
+      "Nov.",
+      "Dic.",
+    ],
     datasets: [
       {
         barPercentage: 0.7,
@@ -76,10 +96,10 @@ export const Bars = ({ apiUrl }) => {
         data: totales[index],
         backgroundColor: [
           // "rgb(255, 99, 132)",
-            // "rgb(54, 162, 235)",
-            // "rgb(255, 205, 86)",
-            // "lightblue",
-            "mediumpurple",
+          // "rgb(54, 162, 235)",
+          // "rgb(255, 205, 86)",
+          // "lightblue",
+          "mediumpurple",
           //   "salmon",
           //   "pink",
           //   "darkseagreen",

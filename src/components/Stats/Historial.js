@@ -66,8 +66,13 @@ export const Historial = ({ apiUrl }) => {
         sheetname,
       }),
     })
+      // Aca se puede usar toast promise o como MIERDA se llame, se puede bindear a onButtonClick xq es una promesa
       .then((res) => toast.success("Movimiento eliminado con éxito"))
-      .catch((err) => toast.error("Algo salió mal, inténtelo de nuevo. Si persiste el problema notifique a Simón"));
+      .catch((err) =>
+        toast.error(
+          "Algo salió mal, inténtelo de nuevo. Si persiste el problema notifique a Simón"
+        )
+      );
   };
 
   return (

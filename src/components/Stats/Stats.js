@@ -5,7 +5,7 @@ import { Bars } from "./TotalesMes";
 import { Historial } from "./Historial";
 import "./stats.css";
 import { CakeProm } from "./CakeProm";
-import { Loading } from "./Loading";
+import { Loading } from "../Loading";
 
 export const Stats = ({ apiUrl }) => {
   const [route, setRoute] = useState("egreso");
@@ -47,7 +47,7 @@ export const Stats = ({ apiUrl }) => {
     fetchData();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
-  
+
   const stats =
     check > 0 ? (
       <div>

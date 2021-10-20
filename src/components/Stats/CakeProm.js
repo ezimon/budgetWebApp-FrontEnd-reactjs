@@ -1,26 +1,23 @@
 import React, { useState, useEffect } from "react";
 import "chart.js";
 // import Chart from 'chart.js/auto';
-import { Pie } from "react-chartjs-2";
-import { Loading } from "./Loading";
+import { Pie } from "react-chartjs-2"; // eslint-disable-next-line
+import { Loading } from "../Loading";
 import "./stats.css";
 
-export const CakeRecount = ({ apiUrl }) => {
-  const [cake, setCake] = useState("");
-  const [isLoading, setIsLoading] = useState(true);
+export const CakeProm = ({ apiUrl }) => {
+  const [promedio, setPromedio] = useState("");
+  // const [promCake, setPromCake] = useState([]);
 
   useEffect(() => {
-    const fetchCake = async () => {
-      await fetch(apiUrl + "/recount")
-        .then((dataCake) => dataCake.json())
-        // .then((dataCake) => dataCake[0])
-        .then((dataCake) => dataCake.map(Number))
-        .then((dataCake) => setCake(dataCake));
-      setIsLoading(false);
+    const fetchData = async () => {
+      await fetch(apiUrl + `/promediomes`)
+        .then((data) => data.json())
+        .then((data) => data.filter((item) => item !== data[9]))
+        .then((data) => setPromedio(data));
     };
-    fetchCake();
-
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+    fetchData();
+    // eslint-disable-next-line
   }, []);
 
   const options = {
@@ -46,7 +43,7 @@ export const CakeRecount = ({ apiUrl }) => {
       },
       title: {
         display: true,
-        text: "egresos todo el año",
+        text: "promedios de egresos",
         color: "green",
         font: {
           size: 25,
@@ -81,7 +78,7 @@ export const CakeRecount = ({ apiUrl }) => {
         borderWidth: 1.5,
         cutout: "27%",
         offset: 7,
-        data: cake,
+        data: promedio,
         backgroundColor: [
           "rgb(255, 99, 132)",
           "rgb(54, 162, 235)",
@@ -92,7 +89,6 @@ export const CakeRecount = ({ apiUrl }) => {
           "pink",
           "darkseagreen",
           "tomato",
-          "grey",
         ],
         hoverOffset: 7,
       },
@@ -100,13 +96,6 @@ export const CakeRecount = ({ apiUrl }) => {
   };
 
   const component = <Pie data={specs} options={options} />;
-
-  return (
-    <div className="cakeDiv">
-      {
-        isLoading ? <Loading /> : component
-        // <p>{cake}</p>
-      }
-    </div>
-  );
+  // console.log(promedio);
+  return <div className="cakeDiv">{component}</div>;
 };

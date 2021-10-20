@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import "tachyons";
-import "./form.css";
+import "../form.css";
 import toast, { Toaster } from "react-hot-toast";
 
 export const IngresoForm = ({ apiUrl }) => {

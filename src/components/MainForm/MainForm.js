@@ -1,11 +1,10 @@
 import React, { useState, useEffect } from "react";
 import toast, { Toaster } from "react-hot-toast";
-import "../App.css";
-import "./form.css";
+import "../../App.css";
+import "../form.css";
 import "tachyons";
 
 export const MainForm = ({ apiUrl }) => {
-
   const [saldo, setSaldo] = useState("");
   useEffect(() => {
     const fetchData = async () => {
@@ -16,7 +15,6 @@ export const MainForm = ({ apiUrl }) => {
     fetchData();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
-
 
   let initState = {
     operacion: "egreso",
@@ -70,24 +68,28 @@ export const MainForm = ({ apiUrl }) => {
     // console.log('2',form.monto);
     // console.log('3',saldo <= form.monto);
     if (saldo < form.monto) {
-        toast((t) => (
-      <span>
-        <b>
-        Este egreso supera su saldo disponible
-        </b>
-        <div>
-          <button className="AprBtn Apr" onClick={() => { submitApr(); toast.dismiss(t.id)}}>
-            Continuar
-          </button>
-          <button className="AprBtn Den" onClick={() => toast.dismiss(t.id)}>
-            Cancelar
-          </button>
-        </div>
-      </span>
-    ));
-  } else {
-    submitApr();
-  }
+      toast((t) => (
+        <span>
+          <b>Este egreso supera su saldo disponible</b>
+          <div>
+            <button
+              className="AprBtn Apr"
+              onClick={() => {
+                submitApr();
+                toast.dismiss(t.id);
+              }}
+            >
+              Continuar
+            </button>
+            <button className="AprBtn Den" onClick={() => toast.dismiss(t.id)}>
+              Cancelar
+            </button>
+          </div>
+        </span>
+      ));
+    } else {
+      submitApr();
+    }
   };
 
   // Condicional para muestra de input concepto personalizado
