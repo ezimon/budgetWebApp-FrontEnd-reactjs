@@ -1,0 +1,20 @@
+.suBtn:hover {
+    /* background-color: lightblue; */
+    cursor: pointer;
+    color: darkseagreen
+}
+
+.AprBtn {
+    margin: 5px;
+    margin-top: 10px;
+    border-radius: 3px;
+}
+
+.difCaja {
+    text-decoration: underline;
+    color: cornflowerblue;
+}
+
+.cMon, .cCan, .cCon, .cBtn {
+    margin-top: 1em;
+}

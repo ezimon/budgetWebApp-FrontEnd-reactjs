@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { MainForm } from "./components/MainForm/MainForm";
+// import { Cuotas } from "./components/MainForm/Cuotas";
 import { IngresoForm } from "./components/IngresoForm/IngresoForm";
 import { Wallet } from "./components/Wallet/Wallet";
 import { NavBar } from "./components/NavBar";
@@ -9,8 +10,8 @@ import "tachyons";
 import Particles from "react-particles-js";
 
 function App() {
-  // const apiUrl = "http://192.168.0.48:1337";
-  const apiUrl = "https://mighty-crag-46095.herokuapp.com";
+  const apiUrl = "http://192.168.0.48:1337";
+  // const apiUrl = "https://mighty-crag-46095.herokuapp.com";
 
   const [route, setRoute] = useState("egreso");
 
@@ -18,8 +19,7 @@ function App() {
   const mainf = <MainForm apiUrl={apiUrl} />;
   const wallet = <Wallet apiUrl={apiUrl} />;
   const stats = <Stats apiUrl={apiUrl} />;
-
-  // const [numCol, setNumCol] = useState("green");
+  // const cuotas = <Cuotas apiUrl={apiUrl} />;
 
   let component;
   switch (route) {
@@ -35,6 +35,9 @@ function App() {
     case "wallet":
       component = wallet;
       break;
+    // case "cuotas":
+    //   component = cuotas;
+    //   break;
     default:
       component = mainf;
       break;
@@ -48,6 +51,7 @@ function App() {
       url: "path/to/svg.svg",
     },
   };
+
 
   return (
     <div className="tc">

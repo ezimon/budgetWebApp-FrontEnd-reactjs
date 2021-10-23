@@ -17,51 +17,32 @@ export const Wallet = ({ apiUrl }) => {
     D: 0,
   });
 
-  const fetchCorrespD = async () => {
-    await fetch(apiUrl + "/correspD")
-      .then((correspD) => correspD.json())
-      .then((correspD) => setCorresp({ ...corresp, D: Number(correspD) }))
-      .catch((err) => setCorresp({ ...corresp, D: "No Disponible" }));
-  };
-  const fetchCorrespS = async () => {
-    await fetch(apiUrl + "/correspS")
-      .then((correspS) => correspS.json())
-      .then((correspS) => setCorresp({ ...corresp, S: Number(correspS) }))
-      .catch((err) => setCorresp({ ...corresp, S: "No Disponible" }));
+
+  const fetchCorresp = async () => {
+    await fetch(apiUrl + "/corresp")
+      .then((data) => data.json())
+      .then((data) => setCorresp({ S: Number(data[0]), D: Number(data[1]) }));
   };
 
-  const fetchSaldarD = async () => {
-    await fetch(apiUrl + "/saldarD")
-      .then((SaldarD) => SaldarD.json())
-      .then((SaldoD) => setSaldar({ ...saldar, D: Number(SaldoD) }))
-      .catch((err) => setSaldar({ ...saldar, D: "No Disponible" }));
-  };
-  const fetchSaldarS = async () => {
-    await fetch(apiUrl + "/saldarS")
-      .then((SaldarS) => SaldarS.json())
-      .then((SaldoS) => setSaldar({ ...saldar, S: Number(SaldoS) }))
-      .catch((err) => setSaldar({ ...saldar, S: "No Disponible" }));
+  const fetchSaldar = async () => {
+    await fetch(apiUrl + "/saldar")
+      .then((data) => data.json())
+      .then((data) => setSaldar({ S: Number(data[0]), D: Number(data[1]) }));
   };
 
   useEffect(() => {
-    fetchCorrespS();
-    fetchCorrespD();
-    fetchSaldarS();
-    fetchSaldarD();
+    fetchCorresp();
+    fetchSaldar();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (
     <div>
-      {/* {isLoading ? (
-        <Loading />
-      ) : ( */}
       <div>
         <Saldo apiUrl={apiUrl} />
         <Promediodia apiUrl={apiUrl} />
         <PromedioMes apiUrl={apiUrl} />
       </div>
-      {/* )} */}
       {saldar.D === 0 && saldar.S === 0 ? null : (
         <Saldar apiUrl={apiUrl} saldar={saldar} setSaldar={setSaldar} />
       )}

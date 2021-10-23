@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from "react";
 import toast, { Toaster } from "react-hot-toast";
+import { Cuotas } from "./Cuotas";
 import "../../App.css";
 import "../form.css";
 import "tachyons";
 
-export const MainForm = ({ apiUrl }) => {
+export const MainForm = ({ apiUrl, setRoute }) => {
   const [saldo, setSaldo] = useState("");
   useEffect(() => {
     const fetchData = async () => {
@@ -183,7 +184,6 @@ export const MainForm = ({ apiUrl }) => {
           <option value="Tabaco">Tabaco 🚭</option>
           <option value="Expensas">Expensas 🏢</option>
           <option value="Servicios">Servicios 🧾</option>
-          {/* <option value="Regalito">Regalitos 👩‍❤️‍👨</option> */}
           <option value="pers">PERSONALIZADO</option>
         </select>
         {component}
@@ -215,9 +215,9 @@ export const MainForm = ({ apiUrl }) => {
         type="submit"
       ></input>
       <Toaster position="top-center" />
-      {/* <a href="">
-      <p className="difCaja" >Diferencia de caja?</p>
-      </a> */}
+      {/* <a href={null} onClick={() => setRoute('cuotas')}> */}
+      <Cuotas apiUrl={apiUrl} />
+      {/* </a> */}
     </div>
   );
 };

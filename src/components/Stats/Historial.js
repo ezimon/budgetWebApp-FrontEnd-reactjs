@@ -67,10 +67,11 @@ export const Historial = ({ apiUrl }) => {
       }),
     })
       // Aca se puede usar toast promise o como MIERDA se llame, se puede bindear a onButtonClick xq es una promesa
+      .then((res) => fetchHist(sheetname))
       .then((res) => toast.success("Movimiento eliminado con éxito"))
       .catch((err) =>
         toast.error(
-          "Algo salió mal, inténtelo de nuevo. Si persiste el problema notifique a Simón"
+          "Algo salió mal, inténtelo de nuevo."
         )
       );
   };
@@ -108,7 +109,6 @@ export const Historial = ({ apiUrl }) => {
         columnDefs={grid.columnDefs}
         rowData={grid.rowData}
         rowSelection="multiple"
-
         // resizable={true}
         // onGridReady={params=> gridApi = params.api}
       />

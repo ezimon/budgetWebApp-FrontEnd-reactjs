@@ -15,7 +15,6 @@ export const Saldo = ({ apiUrl }) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  console.log('saldo', saldo);
   return (
     <div>
       <div className="saldoBubble shadow-4">

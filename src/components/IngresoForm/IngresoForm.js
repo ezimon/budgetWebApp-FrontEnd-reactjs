@@ -99,6 +99,9 @@ export const IngresoForm = ({ apiUrl }) => {
         id="submit"
       ></input>
       <Toaster position="top-center" />
+      {/* <a href="">
+      <p className="difCaja" >Diferencia de caja?</p>
+      </a> */}
     </div>
   );
 };

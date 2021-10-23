@@ -69,7 +69,7 @@ export const Stats = ({ apiUrl }) => {
         </div>
       </div>
     ) : (
-      <h3>No se hay egresos para mostrar</h3>
+      <h3>No hay egresos que mostrar</h3>
     );
 
   return isLoading ? <Loading /> : stats;
