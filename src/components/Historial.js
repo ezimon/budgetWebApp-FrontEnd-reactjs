@@ -53,7 +53,7 @@ export const Historial = ({ apiUrl }) => {
     const selectedNodes = gridRef.current.api.getSelectedNodes();
     let indexes = [];
     for (let i = 0; i < selectedNodes.length; i++) {
-      const element = selectedNodes[i];
+      const element = selectedNodes;
       indexes.push(element.rowIndex);
     }
     await fetch(apiUrl + "/delete", {

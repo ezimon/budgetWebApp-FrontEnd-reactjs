@@ -34,7 +34,7 @@ export const Cuotas = ({ apiUrl }) => {
       }),
     })
       .then((res) => notify())
-      .catch((err) => toast.error("Algo salió mal, intente de nuevo."));
+      .catch((err) => toast.error("Algo salió mal, intente de nuevo"));
     setForm(initState);
   };
 
@@ -72,14 +72,14 @@ export const Cuotas = ({ apiUrl }) => {
   return (
     <div>
       <p className="difCaja" onClick={onOpenModal}>
-        Pagas en cuotas?
+        ¿Pagas en cuotas?
       </p>
       <Modal open={open} onClose={onCloseModal} center>
         <div>
           <h1>Pago en cuotas</h1>
           <p>
             Porfavor procure ingresar todos los datos correctamente. Una vez
-            ingresadas las cuotas no pueden ser modificadas/eliminadas.
+            ingresadas las cuotas <b>NO</b> podrán ser modificadas/eliminadas.
           </p>
           <input
             className="cCon pa3 grow"

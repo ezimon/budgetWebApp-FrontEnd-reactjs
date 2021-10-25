@@ -10,11 +10,6 @@
     border-radius: 3px;
 }
 
-.difCaja {
-    text-decoration: underline;
-    color: cornflowerblue;
-}
-
 .cMon, .cCan, .cCon, .cBtn {
     margin-top: 1em;
 }

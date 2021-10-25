@@ -214,10 +214,8 @@ export const MainForm = ({ apiUrl, setRoute }) => {
         id="submit"
         type="submit"
       ></input>
-      <Toaster position="top-center" />
-      {/* <a href={null} onClick={() => setRoute('cuotas')}> */}
       <Cuotas apiUrl={apiUrl} />
-      {/* </a> */}
+      <Toaster position="top-center" />
     </div>
   );
 };

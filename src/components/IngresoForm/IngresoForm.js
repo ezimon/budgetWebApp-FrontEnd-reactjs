@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import "tachyons";
 import "../form.css";
 import toast, { Toaster } from "react-hot-toast";
+import { DifCaja } from "./DifCaja";
 
 export const IngresoForm = ({ apiUrl }) => {
   const notify = () => toast.success("Ingreso registrado con éxito");
@@ -98,10 +99,8 @@ export const IngresoForm = ({ apiUrl }) => {
         onClick={() => onSubmit(form)}
         id="submit"
       ></input>
+      <DifCaja apiUrl={apiUrl} />
       <Toaster position="top-center" />
-      {/* <a href="">
-      <p className="difCaja" >Diferencia de caja?</p>
-      </a> */}
     </div>
   );
 };

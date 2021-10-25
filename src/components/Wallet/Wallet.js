@@ -5,6 +5,7 @@ import { Corresp } from "./Corresp";
 import { Promediodia } from "./Promediodia";
 import { Saldo } from "./Saldo";
 import { PromedioMes } from "./PromedioMes";
+import { DifCaja } from "../IngresoForm/DifCaja";
 
 export const Wallet = ({ apiUrl }) => {
   const [corresp, setCorresp] = useState({
@@ -39,6 +40,7 @@ export const Wallet = ({ apiUrl }) => {
   return (
     <div>
       <div>
+        <DifCaja apiUrl={apiUrl} />
         <Saldo apiUrl={apiUrl} />
         <Promediodia apiUrl={apiUrl} />
         <PromedioMes apiUrl={apiUrl} />
