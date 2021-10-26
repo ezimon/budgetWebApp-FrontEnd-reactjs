@@ -14,7 +14,8 @@ export const CakeProm = ({ apiUrl }) => {
       await fetch(apiUrl + `/promediomes`)
         .then((data) => data.json())
         .then((data) => data.filter((item) => item !== data[9]))
-        .then((data) => setPromedio(data));
+        .then((data) => setPromedio(data))
+        .catch((err) => console.log(err));
     };
     fetchData();
     // eslint-disable-next-line
