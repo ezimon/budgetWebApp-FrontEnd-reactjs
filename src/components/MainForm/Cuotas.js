@@ -91,6 +91,7 @@ export const Cuotas = ({ apiUrl }) => {
               setForm({ ...form, concepto: event.target.value });
             }}
           ></input>
+          <br />
           <input
             className="cMon pa3 grow"
             name="monto"
@@ -101,6 +102,7 @@ export const Cuotas = ({ apiUrl }) => {
               setForm({ ...form, monto: event.target.value });
             }}
           ></input>
+          <br />
           <input
             className="cCan pa3 grow"
             type="number"
