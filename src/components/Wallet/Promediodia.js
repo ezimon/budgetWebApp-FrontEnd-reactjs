@@ -4,18 +4,19 @@ import CountUp from "react-countup";
 
 export const Promediodia = ({ apiUrl }) => {
   const [promDia, setPromDia] = useState("");
-  
+
   const fetchDataDia = async () => {
     await fetch(apiUrl + `/promediodia`)
       .then((data) => data.json())
-      .then((data) => setPromDia(data));
+      .then((data) => setPromDia(data))
+      .catch((err) => console.log(err));
     //   setIsLoading(false);
   };
 
-useEffect(() => {
-  fetchDataDia();
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-}, [])
+  useEffect(() => {
+    fetchDataDia();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   return (
     <div>
@@ -31,7 +32,11 @@ useEffect(() => {
             className="saldoNum"
             style={promDia < 0 ? { color: "#cc2541" } : { color: "green " }}
           >
-            <CountUp end={promDia} duration={1} formattingFn={promDia => "$"+promDia.toLocaleString()} />
+            <CountUp
+              end={promDia}
+              duration={1}
+              formattingFn={(promDia) => "$" + promDia.toLocaleString()}
+            />
           </h2>
         </div>
       </div>

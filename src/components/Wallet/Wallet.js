@@ -18,17 +18,18 @@ export const Wallet = ({ apiUrl }) => {
     D: 0,
   });
 
-
   const fetchCorresp = async () => {
     await fetch(apiUrl + "/corresp")
       .then((data) => data.json())
-      .then((data) => setCorresp({ S: Number(data[0]), D: Number(data[1]) }));
+      .then((data) => setCorresp({ S: Number(data[0]), D: Number(data[1]) }))
+      .catch((err) => console.log(err));
   };
 
   const fetchSaldar = async () => {
     await fetch(apiUrl + "/saldar")
       .then((data) => data.json())
-      .then((data) => setSaldar({ S: Number(data[0]), D: Number(data[1]) }));
+      .then((data) => setSaldar({ S: Number(data[0]), D: Number(data[1]) }))
+      .catch((err) => console.log(err));
   };
 
   useEffect(() => {

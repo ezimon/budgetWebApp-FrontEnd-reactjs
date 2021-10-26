@@ -15,7 +15,8 @@ export const CakeRecount = ({ apiUrl }) => {
         .then((dataCake) => dataCake.json())
         // .then((dataCake) => dataCake[0])
         .then((dataCake) => dataCake.map(Number))
-        .then((dataCake) => setCake(dataCake));
+        .then((dataCake) => setCake(dataCake))
+        .catch((err) => console.log(err));
       setIsLoading(false);
     };
     fetchCake();

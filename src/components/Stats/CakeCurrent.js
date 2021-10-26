@@ -14,11 +14,11 @@ export const CakeCurrent = ({ apiUrl }) => {
       await fetch(apiUrl + "/cakeCurrent")
         .then((dataCake) => dataCake.json())
         .then((dataCake) => dataCake.map(Number))
-        .then((dataCake) => setCake(dataCake));
+        .then((dataCake) => setCake(dataCake))
+        .catch((err) => console.log(err));
       setIsLoading(false);
     };
     fetchCake();
-
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 

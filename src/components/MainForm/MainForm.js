@@ -11,7 +11,8 @@ export const MainForm = ({ apiUrl, setRoute }) => {
     const fetchData = async () => {
       await fetch(apiUrl + "/saldo")
         .then((dataSaldo) => dataSaldo.json())
-        .then((dataSaldo) => setSaldo(dataSaldo));
+        .then((dataSaldo) => setSaldo(dataSaldo))
+        .catch((err) => console.log(err));
     };
     fetchData();
     // eslint-disable-next-line react-hooks/exhaustive-deps

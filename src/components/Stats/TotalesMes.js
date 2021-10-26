@@ -29,7 +29,8 @@ export const Bars = ({ apiUrl }) => {
     const fetchTotales = async () => {
       await fetch(apiUrl + "/totales")
         .then((data) => data.json())
-        .then((data) => setTotales(data));
+        .then((data) => setTotales(data))
+        .catch((err) => console.log(err));
       setIsLoading(false);
     };
     fetchTotales();

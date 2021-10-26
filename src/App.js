@@ -10,8 +10,8 @@ import "tachyons";
 import Particles from "react-particles-js";
 
 function App() {
-  const apiUrl = "http://192.168.0.48:1337";
-  // const apiUrl = "https://mighty-crag-46095.herokuapp.com";
+  // const apiUrl = "http://localhost:1337";
+  const apiUrl = "https://mighty-crag-46095.herokuapp.com";
 
   const [route, setRoute] = useState("egreso");
 
@@ -51,7 +51,6 @@ function App() {
       url: "path/to/svg.svg",
     },
   };
-
 
   return (
     <div className="tc">

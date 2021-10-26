@@ -5,7 +5,7 @@ import "ag-grid-community/dist/styles/ag-theme-balham.css";
 import "./historial.css";
 import toast, { Toaster } from "react-hot-toast";
 
-export const Historial = ({ apiUrl }) => {
+export const Historial = ({ apiUrl, setRoute }) => {
   const [sheetname, setSheetname] = useState("mesA");
   const gridRef = useRef(null);
   const [grid, setGrid] = useState({
@@ -45,7 +45,8 @@ export const Historial = ({ apiUrl }) => {
       .then((data) => data.json())
       // .then((data) => Object.assign({}, data))
       // .then((data) => setHist(data))
-      .then((data) => setGrid({ ...grid, rowData: data }));
+      .then((data) => setGrid({ ...grid, rowData: data }))
+      .catch((err) => console.log(err));
     //   setIsLoading(false);
   };
 
@@ -69,11 +70,9 @@ export const Historial = ({ apiUrl }) => {
       // Aca se puede usar toast promise o como MIERDA se llame, se puede bindear a onButtonClick xq es una promesa
       .then((res) => fetchHist(sheetname))
       .then((res) => toast.success("Movimiento eliminado con éxito"))
-      .catch((err) =>
-        toast.error(
-          "Algo salió mal, inténtelo de nuevo."
-        )
-      );
+      .catch((err) => toast.error("Algo salió mal, inténtelo de nuevo."));
+    setRoute("esteMes"); // ATADO CON ALAMBRE
+    setRoute("hist");
   };
 
   return (

@@ -45,7 +45,8 @@ export const Historial = ({ apiUrl }) => {
       .then((data) => data.json())
       // .then((data) => Object.assign({}, data))
       // .then((data) => setHist(data))
-      .then((data) => setGrid({ ...grid, rowData: data }));
+      .then((data) => setGrid({ ...grid, rowData: data }))
+      .catch((err) => console.log(err));
     //   setIsLoading(false);
   };
 
