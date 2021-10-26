@@ -17,7 +17,7 @@ export const Stats = ({ apiUrl }) => {
       <CakeProm apiUrl={apiUrl} />
     </div>
   );
-  const historial = <Historial apiUrl={apiUrl} />;
+  const historial = <Historial apiUrl={apiUrl} setRoute={setRoute} />;
 
   let component;
   switch (route) {
@@ -41,7 +41,8 @@ export const Stats = ({ apiUrl }) => {
     const fetchData = async () => {
       await fetch(apiUrl + "/check")
         .then((data) => data.json())
-        .then((data) => setCheck(data));
+        .then((data) => setCheck(data))
+        .catch((err) => console.log(err));
       setIsLoading(false);
     };
     fetchData();
