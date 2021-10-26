@@ -27,6 +27,7 @@
     "react-responsive-modal": "^6.1.0",
     "react-scripts": "4.0.3",
     "react-tsparticles": "^1.35.3",
+    "tachyons": "^4.12.0",
     "tsparticles": "^1.35.3",
     "web-vitals": "^1.1.2"
   },
@@ -53,5 +54,8 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "gh-pages": "^3.2.3"
   }
 }
