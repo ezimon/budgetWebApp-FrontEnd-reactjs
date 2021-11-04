@@ -39,6 +39,7 @@ export const Bars = ({ apiUrl }) => {
   }, []);
 
   const options = {
+    maintainAspectRatio: false,
     // layout: {
     //   padding: 0,
     // },
@@ -135,7 +136,7 @@ export const Bars = ({ apiUrl }) => {
         <option value="7">servicios</option>
         <option value="8">extras</option>
       </select>
-      <Bar data={specs} options={options} />
+      <Bar data={specs} options={options} style={{height:'100%'}} />
     </div>
   );
 

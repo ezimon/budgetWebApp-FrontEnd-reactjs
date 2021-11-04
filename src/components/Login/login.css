@@ -1,0 +1,18 @@
+.login {
+    background-color: rgba(255, 255, 255, 0.7);
+    display: flex;
+    justify-content: right;
+  }
+
+  .lbtn {
+    margin: 11px;
+    margin-top: 11px;
+    border-radius: 1px;
+  }
+
+.closeBtn {
+  background-color: rgba(0,0,0,0);
+  border: none;
+  font-weight: bold;
+  float: top;
+}
