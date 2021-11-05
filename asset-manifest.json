@@ -1,19 +1,19 @@
 {
   "files": {
-    "main.css": "/budgetWebApp-FrontEnd-reactjs/static/css/main.142aa32e.chunk.css",
-    "main.js": "/budgetWebApp-FrontEnd-reactjs/static/js/main.e1d7d471.chunk.js",
-    "main.js.map": "/budgetWebApp-FrontEnd-reactjs/static/js/main.e1d7d471.chunk.js.map",
+    "main.css": "/budgetWebApp-FrontEnd-reactjs/static/css/main.0a41c8d5.chunk.css",
+    "main.js": "/budgetWebApp-FrontEnd-reactjs/static/js/main.a15da170.chunk.js",
+    "main.js.map": "/budgetWebApp-FrontEnd-reactjs/static/js/main.a15da170.chunk.js.map",
     "runtime-main.js": "/budgetWebApp-FrontEnd-reactjs/static/js/runtime-main.c2121f2e.js",
     "runtime-main.js.map": "/budgetWebApp-FrontEnd-reactjs/static/js/runtime-main.c2121f2e.js.map",
     "static/css/2.056a6ad9.chunk.css": "/budgetWebApp-FrontEnd-reactjs/static/css/2.056a6ad9.chunk.css",
-    "static/js/2.82ae695c.chunk.js": "/budgetWebApp-FrontEnd-reactjs/static/js/2.82ae695c.chunk.js",
-    "static/js/2.82ae695c.chunk.js.map": "/budgetWebApp-FrontEnd-reactjs/static/js/2.82ae695c.chunk.js.map",
+    "static/js/2.1fe073c8.chunk.js": "/budgetWebApp-FrontEnd-reactjs/static/js/2.1fe073c8.chunk.js",
+    "static/js/2.1fe073c8.chunk.js.map": "/budgetWebApp-FrontEnd-reactjs/static/js/2.1fe073c8.chunk.js.map",
     "static/js/3.f19c0c2e.chunk.js": "/budgetWebApp-FrontEnd-reactjs/static/js/3.f19c0c2e.chunk.js",
     "static/js/3.f19c0c2e.chunk.js.map": "/budgetWebApp-FrontEnd-reactjs/static/js/3.f19c0c2e.chunk.js.map",
     "index.html": "/budgetWebApp-FrontEnd-reactjs/index.html",
     "static/css/2.056a6ad9.chunk.css.map": "/budgetWebApp-FrontEnd-reactjs/static/css/2.056a6ad9.chunk.css.map",
-    "static/css/main.142aa32e.chunk.css.map": "/budgetWebApp-FrontEnd-reactjs/static/css/main.142aa32e.chunk.css.map",
-    "static/js/2.82ae695c.chunk.js.LICENSE.txt": "/budgetWebApp-FrontEnd-reactjs/static/js/2.82ae695c.chunk.js.LICENSE.txt",
+    "static/css/main.0a41c8d5.chunk.css.map": "/budgetWebApp-FrontEnd-reactjs/static/css/main.0a41c8d5.chunk.css.map",
+    "static/js/2.1fe073c8.chunk.js.LICENSE.txt": "/budgetWebApp-FrontEnd-reactjs/static/js/2.1fe073c8.chunk.js.LICENSE.txt",
     "static/media/egr.536477e2.png": "/budgetWebApp-FrontEnd-reactjs/static/media/egr.536477e2.png",
     "static/media/ingr.da6595ab.png": "/budgetWebApp-FrontEnd-reactjs/static/media/ingr.da6595ab.png",
     "static/media/stats.4ed9404f.png": "/budgetWebApp-FrontEnd-reactjs/static/media/stats.4ed9404f.png",
@@ -22,8 +22,8 @@
   "entrypoints": [
     "static/js/runtime-main.c2121f2e.js",
     "static/css/2.056a6ad9.chunk.css",
-    "static/js/2.82ae695c.chunk.js",
-    "static/css/main.142aa32e.chunk.css",
-    "static/js/main.e1d7d471.chunk.js"
+    "static/js/2.1fe073c8.chunk.js",
+    "static/css/main.0a41c8d5.chunk.css",
+    "static/js/main.a15da170.chunk.js"
   ]
 }
