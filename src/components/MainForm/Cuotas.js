@@ -122,9 +122,9 @@ export const Cuotas = ({ apiUrl }) => {
             id="submit"
           ></input>
         </div>
+      <Toaster position="top-center" />
       </Modal>
       {/* <h1 style={{position: "absolute", left:0, top: 0}}>my life suck toes</h1> */}
-      <Toaster position="top-center" />
     </div>
   );
 };

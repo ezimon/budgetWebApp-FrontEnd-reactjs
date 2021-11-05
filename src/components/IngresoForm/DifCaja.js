@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "react-responsive-modal/styles.css";
 import { Modal } from "react-responsive-modal";
 import "../form.css";
@@ -9,25 +9,43 @@ export const DifCaja = ({ apiUrl }) => {
   const onOpenModal = () => setOpen(true);
   const onCloseModal = () => setOpen(false);
 
-  const [saldoDisp, setsaldoDisp] = useState("");
-  const [dif, setDif] = useState("");
+  const [saldoDisp, setsaldoDisp] = useState(0);
 
   const notify = (saldoDisp) => toast.success(`done`);
 
-  const onSubmit = async (saldoDisp) => {
-    // await fetch(apiUrl + "/difCaja", {
-    //   method: "POST",
-    //   headers: {
-    //     "Content-Type": "application/json",
-    //   },
-    //   body: JSON.stringify({
-    //     saldoDisp,
-    //   }),
-    // })
-    //   .then((res) => notify())
-    //   .catch((err) => toast.error("Algo salió mal, intente de nuevo"));
-    // setsaldoDisp("");
-    console.log(saldoDisp);
+  const [saldo, setSaldo] = useState(0);
+  useEffect(() => {
+    const fetchData = async () => {
+      await fetch(apiUrl + "/saldo")
+        .then((dataSaldo) => dataSaldo.json())
+        .then((dataSaldo) => setSaldo(dataSaldo))
+        .catch((err) => console.log(err));
+    };
+    fetchData();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [saldoDisp]);
+
+  const onSubmit = async (saldoDisp, saldo) => {
+    let dif = saldoDisp - saldo;
+    if (dif < 0) {
+      dif = dif * -1;
+    }
+    dif === 0
+      ? toast.error("No tenes diferencia de caja")
+      : await fetch(apiUrl + "/submit", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            tipo: "Dif. caja",
+            monto: dif,
+            sheetname: "mesA",
+          }),
+        })
+          .then((res) => notify())
+          .catch((err) => toast.error("Algo salió mal, intente de nuevo"));
+    setsaldoDisp(0);
   };
 
   return (
@@ -46,12 +64,13 @@ export const DifCaja = ({ apiUrl }) => {
           del saldo disponible, sin embargo se recomienda utilizarla solo de ser
           necesario.
         </p>
+        <h3>Saldo actual: {saldo}</h3>
         <input
           className="cMon pa3 grow"
-          name="monto"
+          name="saldoDisp"
           type="number"
-          value={saldoDisp}
           placeholder="Saldo disponible"
+          value={saldoDisp}
           onChange={(event) => {
             setsaldoDisp(event.target.value);
           }}
@@ -61,9 +80,10 @@ export const DifCaja = ({ apiUrl }) => {
           type="submit"
           className="cBtn grow pa3"
           name="tipo"
-          onClick={() => onSubmit(saldoDisp)}
+          onClick={() => onSubmit(saldoDisp, saldo)}
           id="submit"
         ></input>
+        <Toaster />
       </Modal>
     </div>
   );

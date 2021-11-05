@@ -76,6 +76,7 @@ export const CakeRecount = ({ apiUrl }) => {
       "Expensas",
       "Servicios",
       "Extras",
+      "Cuotas"
     ],
     datasets: [
       {
@@ -94,6 +95,7 @@ export const CakeRecount = ({ apiUrl }) => {
           "darkseagreen",
           "tomato",
           "grey",
+          'orange'
         ],
         hoverOffset: 7,
       },

@@ -28,7 +28,7 @@ export const Wallet = ({ apiUrl }) => {
   const fetchSaldar = async () => {
     await fetch(apiUrl + "/saldar")
       .then((data) => data.json())
-      .then((data) => setSaldar({ S: Number(data[0]), D: Number(data[1]) }))
+      .then((data) => setSaldar({ S: Number(data[1]), D: Number(data[0]) }))
       .catch((err) => console.log(err));
   };
 

@@ -75,6 +75,7 @@ export const CakeCurrent = ({ apiUrl }) => {
       "Expensas",
       "Servicios",
       "Extras",
+      "Cuotas"
     ],
     datasets: [
       {
@@ -93,6 +94,7 @@ export const CakeCurrent = ({ apiUrl }) => {
           "darkseagreen",
           "tomato",
           "grey",
+          'orange'
         ],
         hoverOffset: 7,
       },

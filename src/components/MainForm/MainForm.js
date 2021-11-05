@@ -7,6 +7,18 @@ import "tachyons";
 
 export const MainForm = ({ apiUrl, setRoute }) => {
   const [saldo, setSaldo] = useState("");
+
+  let initState = {
+    operacion: "egreso",
+    monto: "",
+    tipo: "Super",
+    // tipoPers: "",
+    paga: "Fondo Común",
+    sheetname: "mesA",
+  };
+
+  const [form, setForm] = useState(initState);
+
   useEffect(() => {
     const fetchData = async () => {
       await fetch(apiUrl + "/saldo")
@@ -15,18 +27,9 @@ export const MainForm = ({ apiUrl, setRoute }) => {
         .catch((err) => console.log(err));
     };
     fetchData();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line
   }, []);
-
-  let initState = {
-    operacion: "egreso",
-    monto: "",
-    tipo: "Super",
-    tipoPers: "",
-    paga: "Fondo Común",
-    sheetname: "mesA",
-  };
-  let component;
+  // let component;
 
   const submitApr = ({
     monto,
@@ -37,6 +40,7 @@ export const MainForm = ({ apiUrl, setRoute }) => {
     sheetname,
     specs,
   } = form) => {
+    console.log(specs);
     const promiseA = fetch(apiUrl + "/submit", {
       method: "POST",
       headers: {
@@ -60,15 +64,7 @@ export const MainForm = ({ apiUrl, setRoute }) => {
     setForm(initState);
   };
 
-  // 1. Armar un state, que sea un objeto con 3 propiedades: monto, tipo, tipoPers/tipo2?
-  const [form, setForm] = useState(initState);
-  // const notify = () => toast.success("Egreso registrado con éxito");
-
-  // 2. Armar una funcion que envie los datos
   const onSubmit = () => {
-    // console.log('1',saldo);
-    // console.log('2',form.monto);
-    // console.log('3',saldo <= form.monto);
     if (Number(saldo) < Number(form.monto)) {
       toast((t) => (
         <span>
@@ -94,39 +90,46 @@ export const MainForm = ({ apiUrl, setRoute }) => {
     }
   };
 
-  // Condicional para muestra de input concepto personalizado
-  if (form.tipo === "pers") {
-    component = (
-      <input
-        className="pa3 montoInp grow"
-        type="text"
-        name="tipoPers"
-        placeholder="Concepto personalizado"
-        onChange={(event) => {
-          setForm({ ...form, tipoPers: event.target.value });
-        }}
-      />
-    );
-  } else {
-    component = null;
-  }
+  const [component, setComponent] = useState(<></>);
 
-  // Condicional para muestra de input specs servicio
-  if (form.tipo === "Servicios") {
-    component = (
-      <input
-        className="pa3 montoInp grow"
-        type="text"
-        name="tipoPers"
-        placeholder="Especificación de servicio"
-        onChange={(event) => {
-          setForm({ ...form, specs: event.target.value });
-        }}
-      />
-    );
-  } else {
-    component = null;
-  }
+  useEffect(() => {
+    // console.log(form.tipo)
+    if (form.tipo === "pers") {
+      console.log('yes')
+      setComponent(
+        <input
+          className="pa3 montoInp grow"
+          type="text"
+          name="tipoPers"
+          placeholder="Concepto personalizado"
+          onChange={(event) => {
+            // console.log(event.target.value)
+            setForm({ ...form, tipoPers: event.target.value });
+          }}
+        />
+      )
+    } else {
+      setComponent(null);
+    }
+
+    if (form.tipo === "Servicios") {
+      setComponent(
+        <input
+          className="pa3 montoInp grow"
+          type="text"
+          name="specs"
+          placeholder="Especificación de servicio"
+          onChange={(event) => {
+            setForm({ ...form, specs: event.target.value });
+          }}
+        />
+      )
+      // console.log(component)
+    } else {
+      setComponent(null);
+    }
+    // eslint-disable-next-line
+  }, [form.tipo]);
 
   return (
     <div>

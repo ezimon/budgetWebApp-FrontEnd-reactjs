@@ -11,20 +11,20 @@ import Particles from "react-particles-js";
 import { useAuth0 } from "@auth0/auth0-react";
 import "react-loader-spinner/dist/loader/css/react-spinner-loader.css";
 import Loader from "react-loader-spinner";
-import toast, { Toaster } from "react-hot-toast";
+import toast from "react-hot-toast";
 
 function App() {
   const [loaded, setLoaded] = useState(false);
   const { loginWithPopup, logout, isAuthenticated, user } = useAuth0();
   const OP = "https://mighty-crag-46095.herokuapp.com";
   // const DEMO = "https://mighty-crag-46095.herokuapp.com";
+  // const DEMO = "https://budgetappdemo.herokuapp.com";
   // const OP = "http://localhost:1337";
   const DEMO = "http://localhost:1337";
   const [apiUrl, setApiUrl] = useState("");
 
   useEffect(() => {
     verf();
-    // console.log(user)
     //eslint-disable-next-line
   }, [user]);
 
@@ -49,8 +49,8 @@ function App() {
         })
         .catch((err) => {
           if (err.status === 403) {
-            setApiUrl(DEMO);
             toast.success(`Bienvenido a la versión demo ${user.name}`);
+            setApiUrl(DEMO);
             setLoaded(true);
           } else {
             toast.error("El servidor no responde, contactese con Simón");
@@ -103,6 +103,8 @@ function App() {
             logout={logout}
             isAuthenticated={isAuthenticated}
             user={user}
+            OP={OP}
+            apiUrl={apiUrl}
           />
           <div className="f4 dib v-mid pv-m w-90">
             <div className="forms shadow-4 br3">
@@ -114,16 +116,13 @@ function App() {
         </>
       ) : (
         <>
-          <div className="blur">
             <Loader
               className="loader"
               type="Oval"
               color="white"
             />
-          </div>
         </>
       )}
-      {/* <Toaster position="top-center" /> */}
     </div>
   );
 }
