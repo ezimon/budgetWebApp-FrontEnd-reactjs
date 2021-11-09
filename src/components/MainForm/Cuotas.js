@@ -4,6 +4,7 @@ import { Modal } from "react-responsive-modal";
 import "../form.css";
 import "./cuotas.css";
 import toast, { Toaster } from "react-hot-toast";
+import { CuotasSheet } from "./CuotasSheet";
 
 export const Cuotas = ({ apiUrl }) => {
   const [open, setOpen] = useState(false);
@@ -121,6 +122,7 @@ export const Cuotas = ({ apiUrl }) => {
             onClick={() => onSubmit(form)}
             id="submit"
           ></input>
+          <CuotasSheet apiUrl={apiUrl} />
         </div>
       <Toaster position="top-center" />
       </Modal>

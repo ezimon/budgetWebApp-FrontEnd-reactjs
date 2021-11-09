@@ -11,19 +11,11 @@
     margin-top: 0;
 }
 
-/* 
-.dropInp {
-    width: 80%;
-    margin-bottom: 1em;
-} */
-
 .suBtn {
-    /* background-color: lightcyan; */
     border-radius: 1px;
 }
 
 .suBtn:hover {
-    /* background-color: lightblue; */
     cursor: pointer;
     color: darkseagreen
 }
@@ -46,3 +38,21 @@
     text-decoration: underline;
     color: cornflowerblue;
 }
+
+.difCaja:hover {
+    cursor: pointer;
+}
+
+.pSheets {
+    color: black;
+    margin-right: 0.2em;
+    vertical-align: middle;
+    font-style: unset;
+    float: bottom;
+  }
+  
+  .sheetsImg {
+    height: 2em;
+    vertical-align: middle;
+    margin-left: 0.5em;
+  }

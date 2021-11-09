@@ -24,7 +24,6 @@ export const Historial = ({ apiUrl, setRoute }) => {
           }
         },
       },
-      // { headerName: "monto", field: "3", flex: 1 },
       { headerName: "Abonó", field: "4", flex: 2 },
     ],
     rowData: null,
@@ -34,21 +33,17 @@ export const Historial = ({ apiUrl, setRoute }) => {
     sheetname: "mesA",
   });
 
-  useEffect(() => {
-    fetchHist(sheetname);
-    console.log(sheetname);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [sheetname]);
-
   const fetchHist = (sheetname) => {
     fetch(apiUrl + `/historial/${sheetname}`)
       .then((data) => data.json())
-      // .then((data) => Object.assign({}, data))
-      // .then((data) => setHist(data))
       .then((data) => setGrid({ ...grid, rowData: data }))
       .catch((err) => console.log(err));
-    //   setIsLoading(false);
   };
+
+  useEffect(() => {
+    fetchHist(sheetname);
+    // eslint-disable-next-line
+  }, [sheetname]);
 
   const onButtonClick = async () => {
     const selectedNodes = gridRef.current.api.getSelectedNodes();
@@ -76,41 +71,48 @@ export const Historial = ({ apiUrl, setRoute }) => {
   };
 
   return (
-    <div className="grid ag-theme-balham">
-      <select
-        className="monthSelect"
-        name="sheetname"
-        onChange={(event) => {
-          setSheetname(event.target.value);
-        }}
-      >
-        <option defaultValue value="mesA">
-          mes actual
-        </option>
-        <option value="January">enero</option>
-        <option value="February">febrero</option>
-        <option value="March">marzo</option>
-        <option value="April">abril</option>
-        <option value="May">mayo</option>
-        <option value="June">junio</option>
-        <option value="July">julio</option>
-        <option value="August">agosto</option>
-        <option value="September">septiembre</option>
-        <option value="October">octubre</option>
-        <option value="November">noviembre</option>
-        <option value="December">diciembre</option>
-      </select>
-      <button className="btn" onClick={onButtonClick}>
-        Delete
-      </button>
-      <AgGridReact
-        ref={gridRef}
-        columnDefs={grid.columnDefs}
-        rowData={grid.rowData}
-        rowSelection="multiple"
-        // resizable={true}
-        // onGridReady={params=> gridApi = params.api}
-      />
+    <div>
+      <div className="btnCntnr">
+        <select
+          className="monthSelect"
+          name="sheetname"
+          onChange={(event) => {
+            setSheetname(event.target.value);
+          }}
+        >
+          <option defaultValue value="mesA">
+            mes actual
+          </option>
+          <option value="January">enero</option>
+          <option value="February">febrero</option>
+          <option value="March">marzo</option>
+          <option value="April">abril</option>
+          <option value="May">mayo</option>
+          <option value="June">junio</option>
+          <option value="July">julio</option>
+          <option value="August">agosto</option>
+          <option value="September">septiembre</option>
+          <option value="October">octubre</option>
+          <option value="November">noviembre</option>
+          <option value="December">diciembre</option>
+        </select>
+
+        <button className="delbtn" onClick={onButtonClick}>
+          eliminar 
+        </button>
+      </div>
+
+      <div className="grid ag-theme-balham">
+        <AgGridReact
+          ref={gridRef}
+          columnDefs={grid.columnDefs}
+          rowData={grid.rowData}
+          rowSelection="multiple"
+          // resizable={true}
+          // onGridReady={params=> gridApi = params.api}
+        />
+      </div>
+
       <Toaster />
     </div>
   );

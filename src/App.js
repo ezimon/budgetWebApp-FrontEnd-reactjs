@@ -15,12 +15,13 @@ import toast from "react-hot-toast";
 
 function App() {
   const [loaded, setLoaded] = useState(false);
-  const { loginWithPopup, logout, isAuthenticated, user } = useAuth0();
+  const { loginWithPopup, logout, isAuthenticated, user, loginWithRedirect } =
+    useAuth0();
   const OP = "https://mighty-crag-46095.herokuapp.com";
   // const DEMO = "https://mighty-crag-46095.herokuapp.com";
-  // const DEMO = "https://budgetappdemo.herokuapp.com";
+  const DEMO = "https://budgetappdemo.herokuapp.com";
   // const OP = "http://localhost:1337";
-  const DEMO = "http://localhost:1337";
+  // const DEMO = "http://localhost:1337";
   const [apiUrl, setApiUrl] = useState("");
 
   useEffect(() => {
@@ -95,11 +96,12 @@ function App() {
           : { backgroundColor: "rgb(72, 141, 84)" }
       }
     >
-      { apiUrl === OP ? <Particles className="particlebg" /> : null }
+      {apiUrl === OP ? <Particles className="particlebg" /> : null}
       {loaded ? (
         <>
           <Login
             loginWithPopup={loginWithPopup}
+            loginWithRedirect={loginWithRedirect}
             logout={logout}
             isAuthenticated={isAuthenticated}
             user={user}
@@ -116,11 +118,7 @@ function App() {
         </>
       ) : (
         <>
-            <Loader
-              className="loader"
-              type="Oval"
-              color="white"
-            />
+          <Loader className="loader" type="Oval" color="white" />
         </>
       )}
     </div>

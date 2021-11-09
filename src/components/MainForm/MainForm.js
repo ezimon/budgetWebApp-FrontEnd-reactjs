@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import toast, { Toaster } from "react-hot-toast";
 import { Cuotas } from "./Cuotas";
+import { SheetId } from "../SheetId";
 import "../../App.css";
 import "../form.css";
 import "tachyons";
@@ -219,6 +220,7 @@ export const MainForm = ({ apiUrl, setRoute }) => {
         type="submit"
       ></input>
       <Cuotas apiUrl={apiUrl} />
+      <SheetId apiUrl={apiUrl} />
       <Toaster position="top-center" />
     </div>
   );

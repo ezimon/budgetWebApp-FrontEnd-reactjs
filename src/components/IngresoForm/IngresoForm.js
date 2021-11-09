@@ -3,6 +3,7 @@ import "tachyons";
 import "../form.css";
 import toast, { Toaster } from "react-hot-toast";
 import { DifCaja } from "./DifCaja";
+import { SheetId } from "../SheetId";
 
 export const IngresoForm = ({ apiUrl }) => {
   const notify = () => toast.success("Ingreso registrado con éxito");
@@ -100,6 +101,7 @@ export const IngresoForm = ({ apiUrl }) => {
         id="submit"
       ></input>
       <DifCaja apiUrl={apiUrl} />
+      <SheetId apiUrl={apiUrl} />
       <Toaster position="top-center" />
     </div>
   );

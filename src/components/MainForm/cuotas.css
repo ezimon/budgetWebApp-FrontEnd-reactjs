@@ -1,15 +1,31 @@
 .suBtn:hover {
-    /* background-color: lightblue; */
-    cursor: pointer;
-    color: darkseagreen
+  /* background-color: lightblue; */
+  cursor: pointer;
+  color: darkseagreen;
 }
 
 .AprBtn {
-    margin: 5px;
-    margin-top: 10px;
-    border-radius: 3px;
+  margin: 5px;
+  margin-top: 10px;
+  border-radius: 3px;
 }
 
-.cMon, .cCan, .cCon, .cBtn {
-    margin-top: 1em;
+.cMon,
+.cCan,
+.cCon,
+.cBtn {
+  margin-top: 1em;
 }
+
+.pCuotas {
+  color: black;
+  margin-right: 0.2em;
+  vertical-align: middle;
+}
+
+.cuotasImg {
+  height: 2em;
+  vertical-align: middle;
+  margin-left: 0.5em;
+}
+
