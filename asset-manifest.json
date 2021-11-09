@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/budgetWebApp-FrontEnd-reactjs/static/css/main.266ae7b9.chunk.css",
-    "main.js": "/budgetWebApp-FrontEnd-reactjs/static/js/main.2680b25a.chunk.js",
-    "main.js.map": "/budgetWebApp-FrontEnd-reactjs/static/js/main.2680b25a.chunk.js.map",
+    "main.js": "/budgetWebApp-FrontEnd-reactjs/static/js/main.5eff8cc4.chunk.js",
+    "main.js.map": "/budgetWebApp-FrontEnd-reactjs/static/js/main.5eff8cc4.chunk.js.map",
     "runtime-main.js": "/budgetWebApp-FrontEnd-reactjs/static/js/runtime-main.c2121f2e.js",
     "runtime-main.js.map": "/budgetWebApp-FrontEnd-reactjs/static/js/runtime-main.c2121f2e.js.map",
     "static/css/2.049a2aa5.chunk.css": "/budgetWebApp-FrontEnd-reactjs/static/css/2.049a2aa5.chunk.css",
@@ -25,6 +25,6 @@
     "static/css/2.049a2aa5.chunk.css",
     "static/js/2.0a2bac06.chunk.js",
     "static/css/main.266ae7b9.chunk.css",
-    "static/js/main.2680b25a.chunk.js"
+    "static/js/main.5eff8cc4.chunk.js"
   ]
 }
