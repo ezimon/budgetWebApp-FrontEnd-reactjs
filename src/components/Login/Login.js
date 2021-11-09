@@ -27,7 +27,7 @@ export const Login = ({
       ) : opened ? (
         <div style={{ display: "flex", justifyContent: "right" }}>
           <p>Ud. está viendo una demo interactiva de la app.</p>
-          <button className="lbtn grow" onClick={() => loginWithRedirect()}>
+          <button className="lbtn grow" onClick={() => loginWithPopup()}>
             Soy usuario
           </button>
           <button className="closeBtn" onClick={() => setOpened(false)}>

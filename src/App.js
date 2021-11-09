@@ -18,7 +18,6 @@ function App() {
   const { loginWithPopup, logout, isAuthenticated, user, loginWithRedirect } =
     useAuth0();
   const OP = "https://mighty-crag-46095.herokuapp.com";
-  // const DEMO = "https://mighty-crag-46095.herokuapp.com";
   const DEMO = "https://budgetappdemo.herokuapp.com";
   // const OP = "http://localhost:1337";
   // const DEMO = "http://localhost:1337";
